@@ -24,29 +24,38 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">NIK</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Agama</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">File</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        @if (isset($error))
+                            <tr>
+                                <td colspan="7">{{ $error }}</td>
+                            </tr>
+                        @else
+                            @foreach ($penduduk->data as $item)
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $item->nik }}</td>
+                                    <td>{{ $item->nama }}</td>
+                                    <td>{{ $item->agama }}</td>
+                                    <td>{{ $item->status }}</td>
+                                    <td>
+                                        <img src="{{ config('app.ftp.FTP_URL') }}{{ config('app.ftp.FTP_ROOT') }}{{ $item->file }}"
+                                            width="200">
+                                    </td>
+                                    <td>
+                                        <a href="" class="btn btn-warning">Edit</a>
+                                        <a href="" class="btn btn-danger">Hapus</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

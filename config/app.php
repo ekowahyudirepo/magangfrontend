@@ -2,6 +2,11 @@
 
 return [
 
+    'ftp' => [
+        'FTP_URL'     => 'https://tossiainkediri.site',
+        'FTP_ROOT' => '/magang/',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
